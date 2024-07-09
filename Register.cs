@@ -16,6 +16,7 @@ public class Register(ILogger<Register> logger)
         string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
         var options = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
         Website newWebsite = JsonSerializer.Deserialize<Website>(requestBody, options);
+        
         newWebsite.Id = Guid.NewGuid();
 
         return new OkObjectResult(newWebsite);
