@@ -9,7 +9,7 @@ namespace WebsiteWatcher;
 public class Register(ILogger<Register> logger)
 {
     [Function(nameof(Register))]
-    [SqlOutput("dbo.Websites", connectionStringSetting: "LocalSql")]
+    [SqlOutput("dbo.Websites", "WebsiteWatcher")]
     public async Task<Website> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req)
     {
         logger.LogInformation("C# HTTP trigger function processed a request.");
