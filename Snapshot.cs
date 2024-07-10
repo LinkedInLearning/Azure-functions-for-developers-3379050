@@ -8,9 +8,11 @@ namespace WebsiteWatcher;
 public class Snapshot(ILogger<Snapshot> logger)
 {
     [Function(nameof(Snapshot))]
-    public void Run(
+    [SqlOutput("dbo.Snapshots", "WebsiteWatcher")]
+    public SnapshotRecord? Run(
                 [SqlTrigger("dbo.Websites", "WebsiteWatcher")] IReadOnlyList<SqlChange<Website>> changes)
     {
+        SnapshotRecord? result = null;
         foreach (var change in changes)
         {
             logger.LogInformation($"{change.Operation}");
@@ -29,6 +31,11 @@ public class Snapshot(ILogger<Snapshot> logger)
 
             logger.LogInformation(content);
 
+            result = new SnapshotRecord(change.Item.Id, content);
         }
+
+        return result;
     }
 }
+
+public record SnapshotRecord(Guid Id, string Content);
