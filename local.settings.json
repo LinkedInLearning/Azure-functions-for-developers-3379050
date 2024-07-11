@@ -1,6 +1,7 @@
 {
   "ConnectionStrings": {
-    "WebsiteWatcher": "Data Source=localhost\\sqlexpress;Initial Catalog=WebsiteWatcher;Integrated Security=True;TrustServerCertificate=True"
+    "WebsiteWatcher": "Data Source=localhost\\sqlexpress;Initial Catalog=WebsiteWatcher;Integrated Security=True;TrustServerCertificate=True",
+    "WebsiteWatcherStorage": "UseDevelopmentStorage=true"
   },
   "IsEncrypted": false,
   "Values": {
