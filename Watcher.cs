@@ -16,10 +16,13 @@ public class Watcher(ILogger<Watcher> logger)
                                         WHERE s.Timestamp = (SELECT MAX(Timestamp) FROM dbo.Snapshots WHERE Id = w.Id)";
 
     [Function(nameof(Watcher))]
-    public async Task Run([TimerTrigger("*/20 * * * * *")] TimerInfo myTimer,
+    [SqlOutput("dbo.Snapshots","WebsiteWatcher")]
+    public async Task<SnapshotRecord?> Run([TimerTrigger("*/20 * * * * *")] TimerInfo myTimer,
         [SqlInput(SqlInputQuery, "WebsiteWatcher")] IReadOnlyList<WebsiteModel> websites)
     {
         logger.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+
+        SnapshotRecord? result = null;
 
         foreach (var website in websites)
         {
@@ -39,8 +42,11 @@ public class Watcher(ILogger<Watcher> logger)
                 var blobClient = new BlobClient(connectionString, "pdfs", $"{website.Id}-{DateTime.UtcNow:MMddyyyyhhmmss}.pdf");
                 await blobClient.UploadAsync(newPdf);
                 logger.LogInformation("New PDF uploaded.");
+                result = new SnapshotRecord(website.Id, content);
             }
         }
+
+        return result;
     }
 
     private async Task<Stream> ConvertPageToPdfAsync(string url)
