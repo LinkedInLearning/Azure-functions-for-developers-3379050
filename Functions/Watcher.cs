@@ -3,8 +3,9 @@ using HtmlAgilityPack;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Extensions.Sql;
 using Microsoft.Extensions.Logging;
+using WebsiteWatcher.Services;
 
-namespace WebsiteWatcher;
+namespace WebsiteWatcher.Functions;
 
 public class Watcher(ILogger<Watcher> logger, PdfCreatorService pdfCreatorService)
 {
@@ -14,7 +15,7 @@ public class Watcher(ILogger<Watcher> logger, PdfCreatorService pdfCreatorServic
                                         WHERE s.Timestamp = (SELECT MAX(Timestamp) FROM dbo.Snapshots WHERE Id = w.Id)";
 
     [Function(nameof(Watcher))]
-    [SqlOutput("dbo.Snapshots","WebsiteWatcher")]
+    [SqlOutput("dbo.Snapshots", "WebsiteWatcher")]
     public async Task<SnapshotRecord?> Run([TimerTrigger("*/20 * * * * *")] TimerInfo myTimer,
         [SqlInput(SqlInputQuery, "WebsiteWatcher")] IReadOnlyList<WebsiteModel> websites)
     {
@@ -47,7 +48,7 @@ public class Watcher(ILogger<Watcher> logger, PdfCreatorService pdfCreatorServic
         return result;
     }
 
-   
+
 }
 
 public class WebsiteModel

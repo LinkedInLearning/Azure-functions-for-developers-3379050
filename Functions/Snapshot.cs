@@ -3,7 +3,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Extensions.Sql;
 using Microsoft.Extensions.Logging;
 
-namespace WebsiteWatcher;
+namespace WebsiteWatcher.Functions;
 
 public class Snapshot(ILogger<Snapshot> logger)
 {
@@ -23,7 +23,7 @@ public class Snapshot(ILogger<Snapshot> logger)
                 continue;
             }
 
-            HtmlWeb web = new ();
+            HtmlWeb web = new();
             HtmlDocument doc = web.Load(change.Item.Url);
 
             var divWithContent = doc.DocumentNode.SelectSingleNode(change.Item.XPathExpression);

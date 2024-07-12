@@ -4,7 +4,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Extensions.Sql;
 using Microsoft.Extensions.Logging;
 
-namespace WebsiteWatcher;
+namespace WebsiteWatcher.Functions;
 
 public class Query(ILogger<Query> logger)
 {
@@ -17,7 +17,7 @@ public class Query(ILogger<Query> logger)
 
     [Function(nameof(Query))]
     public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequest req,
-        [SqlInput(SqlInputQuery,"WebsiteWatcher")] IReadOnlyList<dynamic> websites)
+        [SqlInput(SqlInputQuery, "WebsiteWatcher")] IReadOnlyList<dynamic> websites)
     {
         logger.LogInformation("C# HTTP trigger function processed a request.");
         return new OkObjectResult(websites);
