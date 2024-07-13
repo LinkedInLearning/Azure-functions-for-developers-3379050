@@ -7,7 +7,7 @@ using WebsiteWatcher.Services;
 
 namespace WebsiteWatcher.Functions;
 
-public class Register(ILogger<Register> logger, SafeBrowsingService safeBrowsingService)
+public class Register(ILogger<Register> logger)
 {
     [Function(nameof(Register))]
     [SqlOutput("dbo.Websites", "WebsiteWatcher")]
@@ -20,15 +20,6 @@ public class Register(ILogger<Register> logger, SafeBrowsingService safeBrowsing
         Website newWebsite = JsonSerializer.Deserialize<Website>(requestBody, options);
 
         newWebsite.Id = Guid.NewGuid();
-
-        var result = safeBrowsingService.Check(newWebsite.Url);
-
-        if (result.HasThreat)
-        {
-            var threats = string.Join(" ", result.Threats);
-            logger.LogError($"Url has the following threats: {threats}");
-            return null;
-        }
 
         return newWebsite;
     }
