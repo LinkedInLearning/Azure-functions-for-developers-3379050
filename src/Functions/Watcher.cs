@@ -30,7 +30,6 @@ public class Watcher(ILogger<Watcher> logger, PdfCreatorService pdfCreatorServic
 
             var divWithContent = doc.DocumentNode.SelectSingleNode(website.XPathExpression);
             var content = divWithContent != null ? divWithContent.InnerText.Trim() : "No content";
-            content = content.Replace("Microsoft Entra", "Azure AD");
             var contentHasChanged = content != website.LatestContent;
 
             if (contentHasChanged)
