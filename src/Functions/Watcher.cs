@@ -37,7 +37,7 @@ public class Watcher(ILogger<Watcher> logger, PdfCreatorService pdfCreatorServic
             {
                 logger.LogInformation("Content changed!");
                 var newPdf = await pdfCreatorService.ConvertPageToPdfAsync(website.Url);
-                var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:WebsiteWatcherStorage");
+                var connectionString = Environment.GetEnvironmentVariable("AzureWebJobsStorage");
                 var blobClient = new BlobClient(connectionString, "pdfs", $"{website.Id}-{DateTime.UtcNow:MMddyyyyhhmmss}.pdf");
                 await blobClient.UploadAsync(newPdf);
                 logger.LogInformation("New PDF uploaded.");
