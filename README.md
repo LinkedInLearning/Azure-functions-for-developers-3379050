@@ -1,7 +1,9 @@
-# COURSENAME
+# Azure Functions for Developers
 This is the repository for the LinkedIn Learning course `Azure Functions for Developers`. The full course is available from [LinkedIn Learning][lil-course-url].
 
 ![course-name-alt-text][lil-thumbnail-url] 
+
+In this course, learn how to use Azure Functions to develop applications. Instructor Rodrigo Díaz Concha covers the benefits of Azure Functions, hosting plans, and app service plans. Learn how to create and deploy function apps and how to develop, test, debug, and run event-driven code on your local computer, as well as in Visual Studio using .NET. Learn about triggers, bindings, and how to implement both in Azure Functions. Next, Rodrigo explains Blob storage and Cosmos DB. See how to use dependency injection for cleaner code. After that, Rodrigo explains how to deploy Azure Functions from the command-line interface (CLI) and from Visual Studio. Explore how to build and use Azure Durable Functions in your projects, then learn how to manage and secure Azure Functions with Key Vault.
 
 _See the readme file in the main branch for updated instructions and information._
 ## Instructions
@@ -33,6 +35,6 @@ To resolve this issue:
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
 
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: http://
+[lil-course-url]: https://www.linkedin.com/learning/azure-functions-for-developers-24637001
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D4E0DAQF_liEP_rO4ow/learning-public-crop_675_1200/learning-public-crop_675_1200/0/1723500158341?e=2147483647&v=beta&t=Df6VJgFb2R87niMYKqGTrXh610VPTR_b5caQkBOJjX0
 
