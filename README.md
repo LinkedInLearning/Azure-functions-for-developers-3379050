@@ -26,15 +26,19 @@ To resolve this issue:
 
 ## Installing
 1. To use these exercise files, you must have the following installed:
-	- Visual Studio 2022
-	- .NET 8 SDK or above
-	- Azure Functions Core Tools
-	- Azure CLI
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
+	- [Visual Studio 2022](https://visualstudio.com)
+	- [.NET 8 SDK or above](https://dot.net)
+	- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools) (this will be automatically included when you select the Azure workload in Visual Studio.)
+	- [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+	- [Git](https://git-scm.com/downloads)
+	- [Postman](https://www.postman.com/downloads/)
+	- [Microsoft Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer)
+	- [SQL Server Management Studio](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)
+2. You can install all the pre-requisites by using a package manager such as [Chocolatey](https://chocolatey.org/install).
+3. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
 
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
 
 [lil-course-url]: https://www.linkedin.com/learning/azure-functions-for-developers-24637001
 [lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D4E0DAQF_liEP_rO4ow/learning-public-crop_675_1200/learning-public-crop_675_1200/0/1723500158341?e=2147483647&v=beta&t=Df6VJgFb2R87niMYKqGTrXh610VPTR_b5caQkBOJjX0
-
